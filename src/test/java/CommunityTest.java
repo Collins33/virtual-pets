@@ -27,4 +27,20 @@ public class CommunityTest{
     Community secondCommunity=new Community("water lovers","lovers of all things water monsters");
     assertTrue(newCommunity.equals(secondCommunity));
   }
+  @Test
+  public void save_savesIntoTheDatabase(){
+    Community newCommunity=new Community("water lovers","lovers of all things water monsters");
+    newCommunity.save();
+    assertEquals(true,Community.all().get(0).equals(newCommunity));
+  }
+  @Test
+  public void all_returnsAllInstancesOfCommunity(){
+    Community newCommunity=new Community("water lovers","lovers of all things water monsters");
+    newCommunity.save();
+    Community secondCommunity=new Community("water lovers","lovers of all things water monsters");
+    secondCommunity.save();
+    assertEquals(true,Community.all().get(0).equals(newCommunity));
+    assertEquals(true,Community.all().get(1).equals(secondCommunity));
+
+  }
 }
